@@ -31,11 +31,11 @@ Executor - Dremio Direct Memory Allocation
 {{ fail "Dremio's minimum memory requirement is 4 GB." }}
 {{- end -}}
 {{- if le 32786 $engineMemory -}}
-{{- sub $engineMemory 8192 -}}
+{{- sub $engineMemory (add 8192 2048) -}}
 {{- else if le 6144 $engineMemory -}}
-{{- sub $engineMemory 6144 -}}
+{{- sub $engineMemory (add 6144 1536) -}}
 {{- else -}}
-{{- sub $engineMemory 2048 -}}
+{{- sub $engineMemory (add 2048 512) -}}
 {{- end -}}
 {{- end -}}
 
